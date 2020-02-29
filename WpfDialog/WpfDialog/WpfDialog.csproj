@@ -55,7 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helper\BindableBase.cs" />
+    <Compile Include="Helper\DelegateCommand.cs" />
     <Compile Include="ViewModel\Page1ViewModel.cs" />
+    <Compile Include="ViewResource\Page1ViewResource.cs" />
+    <Compile Include="ViewResource\ViewResourceBase.cs" />
     <Compile Include="View\CommonContents.xaml.cs">
       <DependentUpon>CommonContents.xaml</DependentUpon>
     </Compile>
