@@ -12,19 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfDialog.ViewModel;
 
-namespace WpfDialog
+namespace WpfDialog.View
 {
     /// <summary>
-    /// MainWindow.xaml の相互作用ロジック
+    /// CommonContents.xaml の相互作用ロジック
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CommonContents : UserControl
     {
-        public MainWindow()
+        public CommonContents()
         {
             InitializeComponent();
-            this.PageContent.Content = new Page1ViewModel();
         }
     }
 }

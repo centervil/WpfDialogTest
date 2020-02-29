@@ -6,7 +6,5 @@
         xmlns:local="clr-namespace:WpfDialog"
         mc:Ignorable="d"
         Title="MainWindow" Height="360" Width="640">
-    <Grid>
-        
-    </Grid>
+    <ContentControl x:Name="PageContent"/>
 </Window>
