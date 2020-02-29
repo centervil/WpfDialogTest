@@ -20,19 +20,9 @@ namespace WpfDialog.View
     /// </summary>
     public partial class CommonContents : UserControl
     {
-        // 1. 依存プロパティの作成
-        public static readonly DependencyProperty TitleProperty =
-            DependencyProperty.Register(nameof(Title),
-                                        typeof(string),
-                                        typeof(CommonContents),
-                                        new FrameworkPropertyMetadata(nameof(Title), new PropertyChangedCallback(OnTitleChanged)));
-        public static readonly DependencyProperty SubTitleProperty =
-            DependencyProperty.Register(nameof(SubTitle),
-                                        typeof(string),
-                                        typeof(CommonContents),
-                                        new FrameworkPropertyMetadata(nameof(SubTitle), new PropertyChangedCallback(OnSubTitleChanged)));
+        public static readonly DependencyProperty TitleProperty = RegisterDependency(nameof(Title), typeof(string));
+        public static readonly DependencyProperty SubTitleProperty = RegisterDependency(nameof(SubTitle), typeof(string));
 
-        // 2. CLI用プロパティを提供するラッパー
         public string Title
         {
             get { return (string)GetValue(TitleProperty); }
@@ -45,25 +35,28 @@ namespace WpfDialog.View
             set { SetValue(SubTitleProperty, value); }
         }
 
-        // 3. 依存プロパティが変更されたとき呼ばれるコールバック関数の定義
-        private static void OnTitleChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        private static DependencyProperty RegisterDependency(string propertyName, Type propertyType)
         {
-            // オブジェクトを取得して処理する
+            return DependencyProperty.Register(propertyName, propertyType, typeof(CommonContents),
+                new FrameworkPropertyMetadata(propertyName, new PropertyChangedCallback(OnDependencyPropertyChanged)));
+        }
+
+        private static void OnDependencyPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
             CommonContents ctrl = obj as CommonContents;
             if (ctrl != null)
             {
-                ctrl.TitleText.Text = ctrl.Title;
+                if (e.Property.Name == nameof(Title))
+                {
+                    ctrl.TitleText.Text = ctrl.Title;
+                }
+                if (e.Property.Name == nameof(SubTitle))
+                {
+                    ctrl.SubTitleText.Text = ctrl.SubTitle;
+                }
             }
         }
-        private static void OnSubTitleChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
-        {
-            // オブジェクトを取得して処理する
-            CommonContents ctrl = obj as CommonContents;
-            if (ctrl != null)
-            {
-                ctrl.SubTitleText.Text = ctrl.SubTitle;
-            }
-        }
+
         public CommonContents()
         {
             InitializeComponent();
