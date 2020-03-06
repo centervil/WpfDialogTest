@@ -60,6 +60,7 @@
     <Compile Include="ViewModel\Page1ViewModel.cs" />
     <Compile Include="ViewResource\Page1ViewResource.cs" />
     <Compile Include="ViewResource\ViewResourceBase.cs" />
+    <Compile Include="ViewResource\ViewResourceDictionary.cs" />
     <Compile Include="View\CommonContents.xaml.cs">
       <DependentUpon>CommonContents.xaml</DependentUpon>
     </Compile>

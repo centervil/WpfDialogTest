@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfDialog.ViewResource;
 
 namespace WpfDialog.View
 {
@@ -22,6 +23,7 @@ namespace WpfDialog.View
     {
         public static readonly DependencyProperty TitleProperty = RegisterDependency(nameof(Title), typeof(string));
         public static readonly DependencyProperty SubTitleProperty = RegisterDependency(nameof(SubTitle), typeof(string));
+        public static readonly DependencyProperty ViewNameProperty = RegisterDependency(nameof(ViewName), typeof(string));
 
         public string Title
         {
@@ -33,6 +35,12 @@ namespace WpfDialog.View
         {
             get { return (string)GetValue(SubTitleProperty); }
             set { SetValue(SubTitleProperty, value); }
+        }
+        
+        public string ViewName
+        {
+            get { return (string)GetValue(ViewNameProperty); }
+            set { SetValue(ViewNameProperty, value); }
         }
 
         private static DependencyProperty RegisterDependency(string propertyName, Type propertyType)
@@ -53,6 +61,11 @@ namespace WpfDialog.View
                 if (e.Property.Name == nameof(SubTitle))
                 {
                     ctrl.SubTitleText.Text = ctrl.SubTitle;
+                }
+                if (e.Property.Name == nameof(ViewName))
+                {
+                    ctrl.TitleText.Text = ViewResourceDictionary.stringViewResource["Title"];
+                    ctrl.SubTitleText.Text = ViewResourceDictionary.stringViewResource["SubTitle"];
                 }
             }
         }

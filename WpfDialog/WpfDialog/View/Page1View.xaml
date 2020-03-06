@@ -4,17 +4,22 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfDialog.View"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:res="clr-namespace:WpfDialog.ViewResource"
              mc:Ignorable="d" 
-             d:DesignHeight="720" d:DesignWidth="1280">
+             d:DesignHeight="720" d:DesignWidth="1280"
+             Background="White">
     <UserControl.Resources>
         <res:Page1ViewResource x:Key="viewRes"/>
+        <sys:String x:Key="viewName">Page1View</sys:String>
     </UserControl.Resources>
     <Grid>
         <DockPanel LastChildFill="True">
-            <local:CommonContents DockPanel.Dock="Top"
-                                  Title="Page1Title" 
-                                  DataContext="{StaticResource viewRes}"/>
+            <local:CommonContents 
+                DockPanel.Dock="Top"
+                Title="Page1Title" 
+                ViewName="{StaticResource viewName}"
+                DataContext="{StaticResource viewRes}"/>
             <TextBlock Text="Page1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36"/>
         </DockPanel>
     </Grid>
